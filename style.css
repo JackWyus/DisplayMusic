@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,html{
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+.container-center{
+    height: 100%;
+    align-items: center;
+    display: flex;/*O display flex vai fazer com que os elementos se posicione lado a lado*/
+    flex-direction: column; /*Como não queremos que os elementos fiquem um do lado do outro, queremos que ele fique em colunas, usamos essa própriedade para determinar isso*/
+    justify-content: center;
+    background-color: rgb(112, 79, 37);
+}
+
+.imagem-banda img{
+    width: 280px;
+    height: 280px;
+}
+
+.descricao{
+    width: 280px;
+    margin: 10px 0px 25px 0px;
+    text-align: left;
+    background-color: aqua;
+}
+
+.barra{
+    width: 280px;
+    height: 25px;
+    display: flex;
+    border: solid 2px rgb(199, 202, 197);
+    border-radius: 10px;
+    background-color: azure;
+}
+
+.barra progress{
+    width: 280px;
+    height: 25px;
+    line-height: px;
+}
+
