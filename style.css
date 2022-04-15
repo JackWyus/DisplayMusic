@@ -21,13 +21,14 @@ body,html{
 .imagem-banda img{
     width: 280px;
     height: 280px;
+    border-radius: 10px;
 }
 
 .descricao{
     width: 280px;
     margin: 10px 0px 25px 0px;
     text-align: left;
-    background-color: aqua;
+   
 }
 
 .barra{
@@ -51,7 +52,7 @@ body,html{
     height: 20px;
     margin-left: -10px;
     border-radius: 50%;
-    background-color: aquamarine;
+    background-color: rgb(141, 157, 152);
 }
 
 .tempo{
@@ -64,8 +65,9 @@ body,html{
 .player{
     width: 280px;
     display: flex;
+    margin-top: 15px;
     justify-content: space-around; /*Ele vai separar levemente os elementos*/
-    background-color: aquamarine;
+    align-items: center; /*Alinhar os elementos filhos no centro*/
 }
 
 .player i{
@@ -74,10 +76,11 @@ body,html{
 
 .botao-play, .botao-pause{
     font-size: 50px;
+    cursor: pointer;
 }
 
 .botao-pause{
-    display: none; /*Vamos esconder o botão pause no primeiro momento*/
+    display: none;
 }
 
 .setas{
