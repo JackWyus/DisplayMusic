@@ -54,3 +54,32 @@ body,html{
     background-color: aquamarine;
 }
 
+.tempo{
+    width: 278px;
+    display: flex;
+    margin: 5px 0px 12px 0px;
+    justify-content: space-between; /*Essa propriedade com esse valor vai distânciar o máximo que dê dois ou mais elementos*/
+}
+
+.player{
+    width: 280px;
+    display: flex;
+    justify-content: space-around; /*Ele vai separar levemente os elementos*/
+    background-color: aquamarine;
+}
+
+.player i{
+    cursor: pointer;
+}
+
+.botao-play, .botao-pause{
+    font-size: 50px;
+}
+
+.botao-pause{
+    display: none; /*Vamos esconder o botão pause no primeiro momento*/
+}
+
+.setas{
+    font-size: 40px;
+}
