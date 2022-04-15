@@ -32,16 +32,25 @@ body,html{
 
 .barra{
     width: 280px;
-    height: 25px;
-    display: flex;
+    height: 15px;
+    display: flex; 
+    align-items: center;
+    justify-content: flex-start; /*Todos os elementos serão empurrados para a esquerda*/
     border: solid 2px rgb(199, 202, 197);
-    border-radius: 10px;
-    background-color: azure;
+    border-radius: 12px;
 }
 
 .barra progress{
-    width: 280px;
-    height: 25px;
-    line-height: px;
+    width: 50%;
+    height: 15px;
+    padding: 11px;
+}
+
+.ponto{
+    width: 20px;
+    height: 20px;
+    margin-left: -10px;
+    border-radius: 50%;
+    background-color: aquamarine;
 }
 
