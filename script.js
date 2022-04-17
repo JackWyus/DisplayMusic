@@ -36,8 +36,11 @@ function pausarMusica(){
 
 function atuzaliarBarra(){
     let barra = document.querySelector('progress');
-    barra.style.width = (musica.currentTime / musica.duration) * 100 + '%';
+    barra.style.width = Math.floor((musica.currentTime / musica.duration) * 100) + '%';
     console.log(barra);
+
+    let tempoDecorrido = document.querySelector('.tempo_inicio');
+    tempoDecorrido.innerHTML = Math.floor((musica.currentTime));
     /*  
 
 Resumo;
@@ -47,7 +50,8 @@ Resumo;
    > 3º Vamos selecionar essa variável e alterar o seu estilo referente a sua largura dinamicamente, ou seja, de acordo com o andar da música.
    > 4º Atráves da seguinte lógica matemática -> music.currentTime / musica.duration vamos obter em decimal o quanto a música já carregou e pela lógica matemática, podemos transformar qualquer decimal em porcentagem multiplicando por 100.
    > 5º Mas é necessário adicionarmos o sinal de "%" para alterar o width do css(pois está em porcentagem), usamos então + '%' para fazer uma concatenação e o sinal em aspas.
-
+   
+   Extra > Vamos usar o Math.floor() para arredondar para baixo o valor em porcentagem para não ficar muito quebrado.
 */
 
 /*
@@ -63,7 +67,7 @@ Propriedades JavaScript;
     musica.currentTime ele vai nos retornar o estado atual da música em segundos.
 
 Exemplo;
-
+    Math.floor() é usado para arrendondar um elemento para baixo.
     musica.duration = 343 segundos - tempo total
     musica.currentTime = 82segundos - tempo atual da música
 
