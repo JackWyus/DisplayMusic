@@ -6,7 +6,6 @@
 
 body,html{
     height: 100vh;
-    overflow-y: hidden;
 }
 
 .container-center{
@@ -15,10 +14,10 @@ body,html{
     display: flex;/*O display flex vai fazer com que os elementos se posicione lado a lado*/
     flex-direction: column; /*Como não queremos que os elementos fiquem um do lado do outro, queremos que ele fique em colunas, usamos essa própriedade para determinar isso*/
     justify-content: center;
-    background-color: rgb(112, 79, 37);
+    background-color: rgb(84, 79, 71);
 }
 
-.imagem-banda img{
+.container-center_imagem-banda img{
     width: 280px;
     height: 280px;
     border-radius: 10px;
@@ -28,10 +27,9 @@ body,html{
     width: 280px;
     margin: 10px 0px 25px 0px;
     text-align: left;
-   
 }
 
-.barra{
+.duracao_barra{
     width: 280px;
     height: 15px;
     display: flex; 
@@ -41,16 +39,15 @@ body,html{
     border-radius: 12px;
 }
 
-.barra progress{
-    width: 50%;
-    height: 15px;
-    padding: 11px;
+.duracao_barra progress{
+    width: 0; 
+    height: 5px;
 }
 
-.ponto{
+.duracao_ponto{
     width: 20px;
     height: 20px;
-    margin-left: -10px;
+    margin-left: -2px;
     border-radius: 50%;
     background-color: rgb(141, 157, 152);
 }
@@ -70,19 +67,22 @@ body,html{
     align-items: center; /*Alinhar os elementos filhos no centro*/
 }
 
-.player i{
-    cursor: pointer;
-}
-
 .botao-play, .botao-pause{
     font-size: 50px;
     cursor: pointer;
 }
 
+/*
 .botao-pause{
-    display: none;
+    display: none !important;
 }
+*/
 
 .setas{
     font-size: 40px;
+    cursor: pointer;
+}
+
+.player i:hover{
+    color: rgb(22, 173, 173);
 }
