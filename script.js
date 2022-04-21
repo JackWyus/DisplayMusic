@@ -3,8 +3,14 @@ document.querySelector('.botao-pause').style.display = 'none';
 
 /* Vamos criar uma variável que vai ser a nossa música, a música que está tocando no momento*/
 
-var musica = document.querySelector('audio');
+var musica = document.querySelector('audio').duration;
 
+var teste = musica.duration;
+
+document.querySelector('.tempo_fim').textContent = Math.floor(musica.duration);
+//segundosParaminutos(toString(Math.floor(musica.duration+0))); 
+
+console.log(musica)
 
 // Eventos
 
@@ -37,10 +43,10 @@ function pausarMusica(){
 function atuzaliarBarra(){
     let barra = document.querySelector('progress');
     barra.style.width = Math.floor((musica.currentTime / musica.duration) * 100) + '%';
-    console.log(barra);
 
     let tempoDecorrido = document.querySelector('.tempo_inicio');
-    tempoDecorrido.innerHTML = Math.floor((musica.currentTime));
+    tempoDecorrido.textContent = segundosParaminutos(Math.floor(musica.currentTime));
+
     /*  
 
 Resumo;
@@ -80,16 +86,58 @@ Lógica resultante de cada ação das propriedades em JavaScript;
 }
 
 
+function segundosParaminutos(segundos){
+    let campoMinutos = Math.floor(segundos / 60);
+    let campoSegundos = segundos % 60;
+
+    if(campoSegundos < 10){
+        campoSegundos = '0' + campoSegundos;
+    }
+
+    return campoMinutos+':'+campoSegundos;
+/*
 
 
+Vamos fazer um contador para o Campo de Minutos.
+
+Vamos pensar assim:
+
+Vamos supor que o tempo em segundos é igual a 40s
+
+40s ainda não deu 1m,pois 1m é igual a 60s
+
+Se a gente dividir o 40s/60s
+vamos obter 0.666s
+
+vamos apróximar ele para baixo para ele ser logo zero
+
+math.floor(40/60);
+0
+
+A nossa idéia é criar um código que altere o elemento html no campo referente a minutos, ou seja, toda vez que os segundos for menor q 60, ele deve ser igual a zera, pois ainda não atingiu o valor mínimo para ser considerado minutos.
+a lógica é a mesma para qualquer número abaixo de 60s
 
 
+Campos do segundos
+
+vamos usar o operador de resto da divisão inteira %
+
+quando for 1%60
+1
+
+quando for 20%60
+20
+
+quando for 60%60
+0
+
+sempre que o valor em segundos for multiplo de 60 essa contagem volta pro zero, isso vai represar o campo de segundos quando ele for zerado
+
+por exemplo quando for 2m
+120%60
+0s
 
 
-
-
-
-
-
-
-
+a função vai retornar o tempo formatado no finaç 
+*/
+}
