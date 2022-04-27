@@ -3,12 +3,11 @@ document.querySelector('.botao-pause').style.display = 'none';
 
 /* Vamos criar uma variável que vai ser a nossa música, a música que está tocando no momento*/
 
-var musica = document.querySelector('audio').duration;
+var musica = document.querySelector('audio');
 
-var teste = musica.duration;
+let duraçãoMusica = document.querySelector('.tempo_fim');
 
-document.querySelector('.tempo_fim').textContent = Math.floor(musica.duration);
-//segundosParaminutos(toString(Math.floor(musica.duration+0))); 
+duraçãoMusica.textContent = segundosParaminutos(Math.floor(musica.duration));
 
 console.log(musica)
 
