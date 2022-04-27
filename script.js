@@ -1,32 +1,26 @@
 document.querySelector('.botao-pause').style.display = 'none';
 
-
-/* Vamos criar uma variável que vai ser a nossa música, a música que está tocando no momento*/
+// Variáveis
 
 var musica = document.querySelector('audio');
+var duracaoMusica = document.querySelector('.tempo_fim');
+var imagem = document.querySelector('img');
+var nomeMusica = document.querySelector('.descricao h2');
+var nomeArtista = document.querySelector('.descricao i');
 
-let duraçãoMusica = document.querySelector('.tempo_fim');
-
-duraçãoMusica.textContent = segundosParaminutos(Math.floor(musica.duration));
-
-console.log(musica)
 
 // Eventos
 
-
-    /*Vamos selecioar a class botao-play e adicionamos um evento do tipo click e queremos que o O javaScript atráves de uma função dê Play na Música*/
-document.querySelector('.botao-play').addEventListener('click', tocarMusica);
-
+document.querySelector('.botao-play').addEventListener('click', tocarMusica);/*Vamos selecioar a class botao-play e adicionamos um evento do tipo click e queremos que o O javaScript atráves de uma função dê Play na Música*/
 document.querySelector('.botao-pause').addEventListener('click', pausarMusica);
-
-    /*Vamos criar um evento para verificar se a música está tocando e esse evento se chama 'timeupdate', equanto a música estiver tocando o que queremos que aconteça é que a barra acompanhe o tempo da música,vamos criar uma função para isso */
-musica.addEventListener('timeupdate', atuzaliarBarra)
+musica.addEventListener('timeupdate', atuzaliarBarra); /*Vamos criar um evento para verificar se a música está tocando e esse evento se chama 'timeupdate', equanto a música estiver tocando o que queremos que aconteça é que a barra acompanhe o tempo da música,vamos criar uma função para isso */
+window.onload = duration;
 
 
 // Funções
+
 function tocarMusica(){
-    /*Vamos pegar a variável que criamos no início e colocarmos a tag "play, todas vez que o evento for acionado, ele tocará a música"*/ 
-    musica.play();
+    musica.play(); /*Vamos pegar a variável que criamos no início e colocarmos a tag "play, todas vez que o evento for acionado, ele tocará a música"*/ 
 
     /*Após iniciarmos a música queremos que o botão pause que estava escondido fica vísivel e pra isso utilizamos selecionamos o elemento html e usamos o .styl para alterar */
     document.querySelector('.botao-pause').style.display = 'block';
@@ -84,6 +78,9 @@ Lógica resultante de cada ação das propriedades em JavaScript;
 
 }
 
+function duration(){
+    duracaoMusica.textContent = segundosParaminutos(Math.floor(musica.duration));
+}
 
 function segundosParaminutos(segundos){
     let campoMinutos = Math.floor(segundos / 60);
