@@ -2,20 +2,58 @@ document.querySelector('.botao-pause').style.display = 'none';
 
 // Variáveis
 
+ //a Array vai armazenar objetos, um objeto serve para vc armazenar diversos tipos de dados dentro de uma unica estrutura, tipo, criar um objeto que armazene o nome de um usuário,idade,sexo..
+ //cada música vai ser um objeto diferente
+var musicas = [
+    {titulo:'Lana (Prod.MarcusMaia)',artista:'K a m a i t a c h i', src:'musicas/Kamaitachi - Lana.mp3', img:'imagens/Lana.png'},    //as chaves representa um objeto, ele possui a propriedade titulo e o valor dessa propriedade é uma string com nome 'slowed'
+    {titulo:'Ninth Gate (Slowed + Reverb)',artista:'VIRQUISITE', src:'musicas/ninthgate.mp3', img:'imagens/evangelion.png'},
+    {titulo:'Pegando Leve (O Terno cover)',artista:'porfírio', src:'musicas/porfírio - Pegando Leve (O Terno cover).mp3', img:'imagens/Pegando Leve.png'}
+];
+
 var musica = document.querySelector('audio');
 var duracaoMusica = document.querySelector('.tempo_fim');
+
+/*Vamos criar um conjunto de variáveis que vai receber a imagem,nome da música,nome do artista e vamos colocar em uma lista(array)*/
 var imagem = document.querySelector('img');
 var nomeMusica = document.querySelector('.descricao h2');
 var nomeArtista = document.querySelector('.descricao i');
-
+var indexMusica = 0;
 
 // Eventos
+
+renderizarMusica(indexMusica);// Vamos chamar a função de renderizarMusica logo no início, ele vai carregar todas as informações pertinentes ao primeiro objeto que está na posição
 
 document.querySelector('.botao-play').addEventListener('click', tocarMusica);/*Vamos selecioar a class botao-play e adicionamos um evento do tipo click e queremos que o O javaScript atráves de uma função dê Play na Música*/
 document.querySelector('.botao-pause').addEventListener('click', pausarMusica);
 musica.addEventListener('timeupdate', atuzaliarBarra); /*Vamos criar um evento para verificar se a música está tocando e esse evento se chama 'timeupdate', equanto a música estiver tocando o que queremos que aconteça é que a barra acompanhe o tempo da música,vamos criar uma função para isso */
 window.onload = duration;
 
+
+
+document.querySelector('.anterior').addEventListener('click', () =>{
+    indexMusica--;
+    if(indexMusica < 0){
+        indexMusica = 2;
+
+    };
+    let barra = document.querySelector('progress');
+    barra.style.width = 0;
+    renderizarMusica(indexMusica);
+})
+
+document.querySelector('.proxima').addEventListener('click', () =>{
+    indexMusica++;
+    if(indexMusica > 2){
+        indexMusica = 0;
+    };
+    let barra = document.querySelector('progress');
+    barra.style.width = 0;
+    renderizarMusica(indexMusica);
+})
+
+// a função renderiza música vai fazer, ela vai trocar a imagem,o titulo da música e a música...
+
+//() =>{} isso se chama função anonima 
 
 // Funções
 
@@ -33,6 +71,22 @@ function pausarMusica(){
     document.querySelector('.botao-pause').style.display = 'none';
 }
 
+function duration(){
+    duracaoMusica.textContent = segundosParaminutos(Math.floor(musica.duration));
+}
+
+function renderizarMusica(index){
+    musica.setAttribute('src', musicas[index].src)// estamos substituindo o atributo src original da música da tag audiom pelo atributo src que está dentro do array músicas
+    //A primeira coisa que essa função vai fazer quando ela for chamada, é trocar a música que está sendo tocada.
+    //como essas músicas demoram um pouco para carregar, vamos add um evento para dizer que, quando a música terminar de carregar no html,execute esses códigos.
+    musica.addEventListener('loadeddata', ()=>{
+        nomeMusica.textContent = musicas[index].titulo;
+        nomeArtista.textContent = musicas[index].artista;
+        imagem.src = musicas[index].img;
+        duracaoMusica.textContent = segundosParaminutos(Math.floor(musica.duration));
+    });
+}
+
 function atuzaliarBarra(){
     let barra = document.querySelector('progress');
     barra.style.width = Math.floor((musica.currentTime / musica.duration) * 100) + '%';
@@ -40,7 +94,7 @@ function atuzaliarBarra(){
     let tempoDecorrido = document.querySelector('.tempo_inicio');
     tempoDecorrido.textContent = segundosParaminutos(Math.floor(musica.currentTime));
 
-    /*  
+/*  
 
 Resumo;
 
@@ -76,10 +130,6 @@ Lógica resultante de cada ação das propriedades em JavaScript;
     music.currentTime / musica.duration = vamos obter em decimal a quantidade da música já carregada.
 */
 
-}
-
-function duration(){
-    duracaoMusica.textContent = segundosParaminutos(Math.floor(musica.duration));
 }
 
 function segundosParaminutos(segundos){
